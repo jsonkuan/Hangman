@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Hangman</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="about">About</string>
+    <string name="about_text">This app was made by Jason Kuan. It is the best hangman game you will ever play. If you disagree, it doesnt matter because you will now self destruct.</string>
+    <string name="guess_button_label">Guess</string>
+</resources>
