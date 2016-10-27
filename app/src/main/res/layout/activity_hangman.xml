@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_hangman"
     android:layout_width="match_parent"
@@ -17,12 +18,13 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/guessButton" />
+        android:id="@+id/guessButton"
+        android:onClick="guess"/>
 
     <EditText
         android:layout_toStartOf="@+id/guessButton"
         android:layout_toLeftOf="@+id/guessButton"
-        android:id="@+id/editText"
+        android:id="@+id/guessEditText"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
@@ -30,6 +32,50 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:maxLength="1"
-        android:digits="abcdefghijklmnopqrstuvwxyz"/>
+        android:hint="@string/enter_your_guess"
+        android:digits="@string/alpha_numerical_characters"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/hang10"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="73dp"
+        android:id="@+id/imageView" />
+
+    <TextView
+        android:hint="@string/currentword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:id="@+id/wordToGuess"
+        />
+
+    <TextView
+        android:text="@string/you_guessed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/previousGuess"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="@string/remaining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/previousGuess"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/remainingGuesses"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

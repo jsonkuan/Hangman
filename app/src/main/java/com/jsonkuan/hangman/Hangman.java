@@ -1,38 +1,78 @@
 package com.jsonkuan.hangman;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
+ * Hangman
  * Created by jas0n on 2016-10-21.
  */
 
-public class Hangman {
+class Hangman {
 
-    String[] wordDictionary = {"Angry", "Bloomy", "Curious"};
-    private String currentWord = wordDictionary[1];
-    private String[] guessedCorrect = {"a", "b"};
-    private String[] guessedWrong = {"c", "d"};
-    private int numGuesses = 5;
-    private String word;
+    private ArrayList<String> guessedCharacters = new ArrayList<>();
+    private String[] wordDictionary = {"pig", "bird", "sits"};
+    private String currentWord;
+    private int guessRemaining = 10;
 
-    public int getNumGuesses() {
-        return numGuesses;
+    private void setCurrentWord(String currentWord) {
+        this.currentWord = currentWord;
     }
 
-    public String getWord(){
-        return word;
+    void setGuessedCharacters(String guess) {
+       guessedCharacters.add(guess);
     }
 
-    public void setNumGuesses(int numGuesses) {
-        this.numGuesses = numGuesses;
+    void setGuessRemaining(int guessRemaining) {
+        this.guessRemaining = guessRemaining;
     }
 
-    public void setWord(String word) {
-        this.word = word;
+    ArrayList<String> getGuessedCharacters() {
+        return guessedCharacters;
     }
 
-    public void selectRandomWord() {
+    String getCurrentWord() {
+        return currentWord;
+    }
+
+    int getRemainingGuesses() {
+        return guessRemaining;
+    }
+
+   void selectRandomWord() {
         Random rand = new Random();
-        setWord(wordDictionary[rand.nextInt(wordDictionary.length)]);
+        setCurrentWord(wordDictionary[rand.nextInt(wordDictionary.length)]);
     }
+
+   boolean[] checkIfMatches(ArrayList<String> guessedCharacters, String currentWord){
+        boolean[] visible = new boolean[currentWord.length()];
+        for (int i = 0; i < guessedCharacters.size(); i++) {
+            for (int j = 0; j < currentWord.length(); j++) {
+               if (guessedCharacters.get(i).equals(currentWord.substring(j, j+1))) {
+                   visible[j] = true;
+               }
+            }
+        }
+        return visible;
+    }
+
+    String hideWord() {
+        String hiddenWord = "";
+        for (int i = 0; i < currentWord.length(); i++) hiddenWord += "_ ";
+        return hiddenWord;
+    }
+
+
+    String printHiddenWord(boolean[] b) {
+        String hiddenWord = "";
+        for (int i = 0; i < currentWord.length(); i++) {
+            if (b[i]) {
+                hiddenWord += currentWord.charAt(i);
+            } else {
+                hiddenWord += "_ ";
+            }
+        }
+        return hiddenWord;
+    }
+
 }

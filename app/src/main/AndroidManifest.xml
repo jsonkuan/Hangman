@@ -8,8 +8,6 @@
         android:label="@string/main_menu"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        android:
-
         <activity
             android:name=".MainMenuActivity"
             android:label="@string/main_menu">
@@ -19,17 +17,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AboutScreenActivity"
-            android:label="@string/about">
-        </activity>
-
+            android:label="@string/about" />
         <activity
             android:name=".HangmanActivity"
-            android:label="@string/app_name">
-        </activity>
-
+            android:label="@string/app_name" />
+        <activity
+            android:name=".ResultActivity"
+            android:label="@string/result" />
     </application>
 
 </manifest>

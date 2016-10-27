@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/play_button"
+        android:icon="@drawable/hang10"
+        android:orderInCategory="100"
+        android:showAsAction="always"/>
+    <item
+        android:id="@+id/about_button"
+        android:icon="@drawable/hang0"
+        android:orderInCategory="100"
+        android:showAsAction="always"/>
+</menu>
