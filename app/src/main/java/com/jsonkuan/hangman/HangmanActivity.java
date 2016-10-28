@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,16 +23,45 @@ public class HangmanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hangman);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
         hangman.selectRandomWord();
 
-        TextView textview = (TextView) findViewById(R.id.wordToGuess);
-        textview.setText(hangman.hideWord());
+            TextView textview = (TextView) findViewById(R.id.wordToGuess);
+            textview.setText(hangman.hideWord());
 
-        TextView remainingGuessTextView = (TextView) findViewById(R.id.remainingGuesses);
-        remainingGuessTextView.setText(String.format("Remaining: %s", hangman.getRemainingGuesses()));
+            TextView remainingGuessTextView = (TextView) findViewById(R.id.remainingGuesses);
+            remainingGuessTextView.setText(String.format("Remaining: %s", hangman.getRemainingGuesses()));
 
-        ImageView imageView = (ImageView) findViewById(R.id.imageView);
-        imageView.setImageResource(images[currentImage]);
+            ImageView imageView = (ImageView) findViewById(R.id.imageView);
+            imageView.setImageResource(images[currentImage]);
+        }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.game_menubar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return super.onOptionsItemSelected(item);
+            case R.id.infoIcon:
+                Intent intent = new Intent(this, AboutScreenActivity.class);
+                startActivity(intent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void guess(View view) {
