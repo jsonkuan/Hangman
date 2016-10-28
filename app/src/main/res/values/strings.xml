@@ -3,7 +3,7 @@
     <string name="main_menu">Main Menu</string>
     <string name="about">About</string>
     <string name="result">Result</string>
-    <string name="about_text">This app was made by Jason Kuan. It is the best hangman game you will ever play. If you disagree, it doesnt matter because you will now self destruct.</string>
+    <string name="about_text">Programmed by Jason Kuan \n\n\t\t Made in Gothenburg. \n\n\n\n\n\t\t\t ...this message will soon self-destruct.</string>
     <string name="guess_button_label">Guess</string>
     <string name="enter_your_guess">Enter your guess...</string>
     <string name="alpha_numerical_characters">abcdefghijklmnopqrstuvwxyz</string>
@@ -11,9 +11,11 @@
     <string name="actual_word">Word:</string>
     <string name="remaining_guesses">Remaining Guesses:</string>
     <string name="previous_guesses">Previous Guesses:</string>
-    <string name="you_guessed">You Guessed:</string>
+    <string name="you_guessed">Guessed:</string>
     <string name="currentword">currentWord</string>
     <string name="remaining">Remaining:</string>
     <string name="you_win">You Win!</string>
     <string name="you_lose">You Lose!</string>
+    <string name="already_guessed_toast">You already guessed that!</string>
+    <string name="only_one_letter">You can only enter 1 letter!</string>
 </resources>

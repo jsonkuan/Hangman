@@ -109,4 +109,24 @@ class Hangman {
             }
         }
     }
+
+    boolean checkIfGuessed() {
+        String lastGuess = guessedLetters.get(guessedLetters.size() - 1);
+        boolean flag = false;
+
+        for (int i = 0; i < guessedLetters.size() - 1; i++) {
+            if (lastGuess.equals(guessedLetters.get(i))) {
+                flag = true;
+                break;
+            } else {
+                flag = false;
+            }
+        }
+        return flag;
+    }
+
+    void resetUI() {
+        guessedLetters.remove(guessedLetters.size() - 1);
+        guessRemaining++;
+    }
 }

@@ -1,5 +1,6 @@
 package com.jsonkuan.hangman;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class HangmanActivity extends AppCompatActivity {
 
@@ -30,12 +32,9 @@ public class HangmanActivity extends AppCompatActivity {
         imageView.setImageResource(images[currentImage]);
     }
 
-
     public void guess(View view) {
 
-        EditText editText = (EditText) findViewById(R.id.guessEditText);
-        String playerGuess = editText.getText().toString();
-        hangman.addGuessedLetter(playerGuess);
+        validateInputToast();
 
         TextView guessedLetterTextView = (TextView) findViewById(R.id.previousGuess);
         guessedLetterTextView.setText(String.format("You Guessed: %s", hangman.getGuessedLetters()));
@@ -48,7 +47,6 @@ public class HangmanActivity extends AppCompatActivity {
         TextView remainingGuessTextView = (TextView) findViewById(R.id.remainingGuesses);
         remainingGuessTextView.setText(String.format("Remaining: %s", hangman.getRemainingGuesses()));
 
-        changeImageSource();
         calculateGameResult();
         clearEditText();
     }
@@ -82,4 +80,27 @@ public class HangmanActivity extends AppCompatActivity {
         editText.setText("");
     }
 
+    private void validateInputToast(){
+        Context context = getApplicationContext();
+        CharSequence text = getString(R.string.already_guessed_toast);
+        CharSequence text2 = getString(R.string.only_one_letter);
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        Toast toast2 = Toast.makeText(context, text2, duration);
+
+        EditText editText = (EditText) findViewById(R.id.guessEditText);
+        String playerGuess = editText.getText().toString();
+        hangman.addGuessedLetter(playerGuess);
+
+        if(hangman.checkIfGuessed()) {
+            hangman.resetUI();
+            toast.show();
+        } else if (editText.length() > 1) {
+            hangman.resetUI();
+            toast2.show();
+        } else {
+            changeImageSource();
+        }
+    }
 }
