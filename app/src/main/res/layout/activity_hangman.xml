@@ -30,7 +30,8 @@
         android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
+        android:gravity="start"
         android:maxLength="1"
         android:hint="@string/enter_your_guess"
         android:digits="@string/alpha_numerical_characters"/>

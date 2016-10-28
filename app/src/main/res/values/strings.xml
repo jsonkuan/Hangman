@@ -8,12 +8,12 @@
     <string name="enter_your_guess">Enter your guess...</string>
     <string name="alpha_numerical_characters">abcdefghijklmnopqrstuvwxyz</string>
     <string name="return_to_main_menu">Return to main menu</string>
-    <string name="you_win">You Win</string>
-    <string name="you_lose">You Lose!</string>
     <string name="actual_word">Word:</string>
     <string name="remaining_guesses">Remaining Guesses:</string>
     <string name="previous_guesses">Previous Guesses:</string>
     <string name="you_guessed">You Guessed:</string>
     <string name="currentword">currentWord</string>
     <string name="remaining">Remaining:</string>
+    <string name="you_win">You Win!</string>
+    <string name="you_lose">You Lose!</string>
 </resources>

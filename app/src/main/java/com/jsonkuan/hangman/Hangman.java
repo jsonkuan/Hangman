@@ -10,41 +10,47 @@ import java.util.Random;
 
 class Hangman {
 
-    private ArrayList<String> guessedCharacters = new ArrayList<>();
-    private String[] wordDictionary = {"pig", "bird", "sits"};
+    private ArrayList<String> guessedLetters = new ArrayList<>();
+    private String[] wordDictionary = {"pig", "bird", "xxx"};
     private String currentWord;
+    private boolean displayWinResult = false;
+    private boolean guessWasCorrect = false;
     private int guessRemaining = 10;
 
     private void setCurrentWord(String currentWord) {
         this.currentWord = currentWord;
     }
 
-    void setGuessedCharacters(String guess) {
-       guessedCharacters.add(guess);
+    void addGuessedLetter(String guess) {
+       guessedLetters.add(guess);
     }
 
     void setGuessRemaining(int guessRemaining) {
         this.guessRemaining = guessRemaining;
     }
 
-    ArrayList<String> getGuessedCharacters() {
-        return guessedCharacters;
+    ArrayList<String> getGuessedLetters() {
+        return guessedLetters;
     }
 
     String getCurrentWord() {
         return currentWord;
     }
 
+    boolean getIsGuessCorrect() {
+        return guessWasCorrect;
+    }
+
     int getRemainingGuesses() {
         return guessRemaining;
     }
 
-   void selectRandomWord() {
+    void selectRandomWord() {
         Random rand = new Random();
         setCurrentWord(wordDictionary[rand.nextInt(wordDictionary.length)]);
     }
 
-   boolean[] checkIfMatches(ArrayList<String> guessedCharacters, String currentWord){
+    boolean[] checkIfMatches(ArrayList<String> guessedCharacters, String currentWord){
         boolean[] visible = new boolean[currentWord.length()];
         for (int i = 0; i < guessedCharacters.size(); i++) {
             for (int j = 0; j < currentWord.length(); j++) {
@@ -53,6 +59,7 @@ class Hangman {
                }
             }
         }
+        if(allAreTrue(visible)) displayWinResult = true;
         return visible;
     }
 
@@ -61,7 +68,6 @@ class Hangman {
         for (int i = 0; i < currentWord.length(); i++) hiddenWord += "_ ";
         return hiddenWord;
     }
-
 
     String printHiddenWord(boolean[] b) {
         String hiddenWord = "";
@@ -75,4 +81,32 @@ class Hangman {
         return hiddenWord;
     }
 
+    private boolean allAreTrue(boolean[] array) {
+        for (boolean b : array) if (!b) return false;
+        return true;
+    }
+
+    boolean isWordComplete() {
+        return displayWinResult;
+    }
+
+    String showWinStatus() {
+        if (displayWinResult) {
+            return "You Win!";
+        } else {
+            return "You Lose!";
+        }
+    }
+
+    void checkGuess() {
+        String lastGuess = guessedLetters.get(guessedLetters.size() - 1);
+        for (int i = 0; i < currentWord.length() ; i++) {
+            if (lastGuess.equals(currentWord.substring(i, i+1))) {
+               guessWasCorrect = true;
+                break;
+            } else {
+                guessWasCorrect = false;
+            }
+        }
+    }
 }
