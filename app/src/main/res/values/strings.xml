@@ -5,20 +5,19 @@
     <string name="result">Result</string>
     <string name="about_text">Programmed by Jason Kuan \nMade in Gothenburg. </string>
     <string name="guess_button_label">Guess</string>
-    <string name="enter_your_guess">Enter your guess...</string>
+    <string name="enter_your_guess">Guess a letter...</string>
     <string name="alpha_numerical_characters">abcdefghijklmnopqrstuvwxyz</string>
     <string name="return_to_main_menu">Return to main menu</string>
     <string name="actual_word">Word:</string>
     <string name="remaining_guesses">Remaining Guesses:</string>
     <string name="previous_guesses">Previous Guesses:</string>
-    <string name="you_guessed">Guessed:</string>
-    <string name="currentword">currentWord</string>
-    <string name="remaining">Remaining:</string>
+    <string name="current_word">currentWord</string>
+    <string name="remaining">Tries Left:</string>
     <string name="you_win">You Win!</string>
     <string name="you_lose">You Lose!</string>
     <string name="already_guessed_toast">You already guessed that!</string>
     <string name="only_one_letter">You can only enter 1 letter!</string>
     <string name="play">Play</string>
-    <string name="into">info</string>
     <string name="info">info</string>
+    <string name="enter_a_letter_message">Enter a letter (a-z)</string>
 </resources>

@@ -15,20 +15,21 @@
 
 
     <TextView
-        android:text="@string/you_guessed"
+        android:text="@string/remaining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/remainingGuesses" />
+
+    <TextView
+        android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
         android:id="@+id/previousGuess" />
 
-    <TextView
-        android:text="@string/remaining"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:id="@+id/remainingGuesses" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -39,7 +40,7 @@
         android:id="@+id/imageView" />
 
     <TextView
-        android:hint="@string/currentword"
+        android:hint="@string/current_word"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -49,30 +50,27 @@
         android:textAlignment="center"
         android:id="@+id/wordToGuess" />
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/guessEditText"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="0.35"
-        android:weightSum="1">
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:gravity="right"
+        android:textColor="@android:color/black"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:maxLength="1"
+        android:hint="@string/enter_your_guess"
+        android:digits="@string/alpha_numerical_characters" />
 
-        <EditText
-            android:id="@+id/guessEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="viewStart"
-            android:gravity="start"
-            android:maxLength="1"
-            android:hint="@string/enter_your_guess"
-            android:digits="@string/alpha_numerical_characters"
-            android:layout_weight="1.00" />
-
-        <Button
-           android:text="@string/guess_button_label"
-           android:layout_width="132dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/guessButton"
-            android:onClick="guess"/>
-    </LinearLayout>
+    <Button
+        android:text="@string/guess_button_label"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginLeft="60dp"
+        android:background="@android:color/holo_blue_dark"
+        android:id="@+id/guessButton"
+        android:onClick="guess" />
 
 </LinearLayout>

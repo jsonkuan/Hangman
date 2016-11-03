@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Hangman
+ * hangman
  * Created by jas0n on 2016-10-21.
  */
 
 class Hangman {
 
     private ArrayList<String> guessedLetters = new ArrayList<>();
-    private String[] wordDictionary = {"pig", "bird", "xxx"};
+    private String[] wordDictionary = {"paranoid", "android", "xxx", "shoe"};
     private String currentWord;
     private boolean displayWinResult = false;
     private boolean guessWasCorrect = false;
@@ -102,7 +102,8 @@ class Hangman {
         String lastGuess = guessedLetters.get(guessedLetters.size() - 1);
         for (int i = 0; i < currentWord.length() ; i++) {
             if (lastGuess.equals(currentWord.substring(i, i+1))) {
-               guessWasCorrect = true;
+                guessWasCorrect = true;
+                setGuessRemaining(getRemainingGuesses() + 1);
                 break;
             } else {
                 guessWasCorrect = false;
@@ -127,6 +128,6 @@ class Hangman {
 
     void resetUI() {
         guessedLetters.remove(guessedLetters.size() - 1);
-        guessRemaining++;
+        guessRemaining += 1;
     }
 }
